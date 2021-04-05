@@ -26,6 +26,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile 'io.springfox:springfox-swagger2:3.0.0'
     compile 'io.springfox:springfox-swagger-ui:3.0.0'
+    compile 'com.cloudinary:cloudinary-http44:1.29.0'
 }
 
 test {
