@@ -1,6 +1,5 @@
 package com.dgsaltarin.keromanga.domain;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
