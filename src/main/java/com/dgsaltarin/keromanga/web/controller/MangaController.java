@@ -53,4 +53,10 @@ public class MangaController {
 
         return new ResponseEntity<>(mangaService.save(mangaRequest), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable("id") int id) {
+        mangaService.delete(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

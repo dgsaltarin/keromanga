@@ -29,4 +29,8 @@ public class MangaService {
     public Manga save(MangaRequest mangaRequest) {
         return mangaRepository.save(mangaConverter.RequestMangaToManga(mangaRequest));
     }
+
+    public void delete(int id) {
+        mangaRepository.deleteById(id);
+    }
 }
