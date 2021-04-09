@@ -23,7 +23,7 @@ public class MangaService {
     }
 
     public Optional<List<Manga>> getAll() {
-        return Optional.ofNullable(mangaRepository.findAll());
+        return mangaRepository.getAll();
     }
 
     public Manga save(MangaRequest mangaRequest) {
@@ -31,6 +31,6 @@ public class MangaService {
     }
 
     public void delete(int id) {
-        mangaRepository.deleteById(id);
+        mangaRepository.delete(id);
     }
 }

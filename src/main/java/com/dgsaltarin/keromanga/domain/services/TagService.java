@@ -23,14 +23,14 @@ public class TagService {
     }
 
     public Optional<List<Tag>> getAll() {
-        return Optional.ofNullable(tagRepository.findAll());
+        return tagRepository.getAll();
     }
 
-    public Tag add(TagRequest tagRequest) {
-        return tagRepository.save(tagConverter.convertTagRequestToTag(tagRequest));
+    public Tag add(TagRequest tag) {
+        return tagRepository.save(tagConverter.convertTagRequestToTag(tag));
     }
 
     public void delete(int id) {
-        tagRepository.deleteById(id);
+        tagRepository.delete(id);
     }
 }

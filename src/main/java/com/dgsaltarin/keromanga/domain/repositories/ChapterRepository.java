@@ -1,7 +1,13 @@
 package com.dgsaltarin.keromanga.domain.repositories;
 
 import com.dgsaltarin.keromanga.domain.Chapter;
-import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ChapterRepository extends MongoRepository<Chapter, Integer> {
+import java.util.List;
+import java.util.Optional;
+
+public interface ChapterRepository {
+
+    Optional<List<Chapter>> getAll();
+    Chapter save(Chapter chapter);
+    void delete(int id);
 }

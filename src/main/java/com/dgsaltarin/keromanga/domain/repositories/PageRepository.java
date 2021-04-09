@@ -1,7 +1,13 @@
 package com.dgsaltarin.keromanga.domain.repositories;
 
 import com.dgsaltarin.keromanga.domain.Page;
-import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface PageRepository extends MongoRepository<Page, Integer> {
+import java.util.List;
+import java.util.Optional;
+
+public interface PageRepository {
+
+    Optional<List<Page>> getAll();
+    Page save(Page page);
+    void delete(int id);
 }

@@ -18,6 +18,7 @@ public class MangaConverter {
 
     public Manga RequestMangaToManga(MangaRequest mangaRequest) {
         Manga manga = new Manga();
+        manga.setName(mangaRequest.getName());
         manga.setAuthor(mangaRequest.getAuthor());
         manga.setDescription(mangaRequest.getDescription());
         manga.setTags(mangaRequest.getTags());

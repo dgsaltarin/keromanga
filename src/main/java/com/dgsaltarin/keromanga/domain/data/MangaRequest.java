@@ -6,11 +6,20 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public class MangaRequest {
+    private String name;
     private String author;
     private MultipartFile cover;
     private String description;
     private boolean onGoing;
     private List<Tag> tags;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getAuthor() {
         return author;

@@ -1,14 +1,12 @@
 package com.dgsaltarin.keromanga.domain;
 
-import org.springframework.data.annotation.Id;
-
 import java.util.List;
 
 
 public class Manga {
 
-    @Id
     private int id;
+    private String name;
     private String author;
     private String cover;
     private List<Chapter> chapters;
@@ -22,6 +20,14 @@ public class Manga {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAuthor() {

@@ -1,6 +1,5 @@
 package com.dgsaltarin.keromanga.domain.data;
 
-import com.dgsaltarin.keromanga.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
