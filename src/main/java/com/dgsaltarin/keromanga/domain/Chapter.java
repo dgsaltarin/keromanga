@@ -10,6 +10,7 @@ public class Chapter {
     private List<Page> pages;
     private LocalDate date;
     private String cover;
+    private Manga manga;
 
     public int getId() {
         return id;
@@ -49,5 +50,13 @@ public class Chapter {
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public Manga getManga() {
+        return manga;
+    }
+
+    public void setManga(Manga manga) {
+        this.manga = manga;
     }
 }

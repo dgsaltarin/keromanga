@@ -10,7 +10,7 @@ public class ChapterRequest {
     private int number;
     private List<MultipartFile> pages;
     private LocalDate date;
-    private String cover;
+    private int mangaId;
 
     public int getNumber() {
         return number;
@@ -36,11 +36,11 @@ public class ChapterRequest {
         this.date = date;
     }
 
-    public String getCover() {
-        return cover;
+    public int getMangaId() {
+        return mangaId;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setMangaId(int mangaId) {
+        this.mangaId = mangaId;
     }
 }

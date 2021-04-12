@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface MangaRepository {
 
     Optional<List<Manga>> getAll();
+    Manga getManga(int id);
     Manga save(Manga manga);
     void delete(int id);
 }

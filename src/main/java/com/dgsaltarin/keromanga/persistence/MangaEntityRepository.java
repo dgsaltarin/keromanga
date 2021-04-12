@@ -30,6 +30,11 @@ public class MangaEntityRepository implements MangaRepository {
     }
 
     @Override
+    public Manga getManga(int id) {
+        return mangaMapper.toManga(mangaCrudRepository.findById(id).get());
+    }
+
+    @Override
     public Manga save(Manga manga) {
         MangaEntity mangaEntity = mangaMapper.toMangaEntity(manga);
         return mangaMapper.toManga(mangaCrudRepository.save(mangaEntity));

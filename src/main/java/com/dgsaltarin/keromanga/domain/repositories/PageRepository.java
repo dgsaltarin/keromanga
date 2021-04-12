@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public interface PageRepository {
 
-    Optional<List<Page>> getAll();
+    Optional<List<Page>> getChapterPages(int idChapter);
     Page save(Page page);
-    void delete(int id);
 }

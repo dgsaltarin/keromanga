@@ -26,6 +26,10 @@ public class MangaService {
         return mangaRepository.getAll();
     }
 
+    public Manga getManga(int id) {
+        return mangaRepository.getManga(id);
+    }
+
     public Manga save(MangaRequest mangaRequest) {
         return mangaRepository.save(mangaConverter.RequestMangaToManga(mangaRequest));
     }
