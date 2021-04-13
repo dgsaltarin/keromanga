@@ -89,7 +89,7 @@ public class MangaEntity {
         this.onGoing = onGoing;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JsonManagedReference
     @JoinTable(name = "manga_tag", joinColumns = @JoinColumn(name = "id_manga"), inverseJoinColumns = @JoinColumn(name = "id_tag"))
     public List<TagEntity> getTags() {

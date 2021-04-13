@@ -1,17 +1,17 @@
 package com.dgsaltarin.keromanga.domain.data;
 
-import com.dgsaltarin.keromanga.domain.Tag;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public class MangaRequest {
+
     private String name;
     private String author;
     private MultipartFile cover;
     private String description;
     private boolean onGoing;
-    private List<Tag> tags;
+    private List<String> tags;
 
     public String getName() {
         return name;
@@ -53,11 +53,11 @@ public class MangaRequest {
         this.onGoing = onGoing;
     }
 
-    public List<Tag> getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tag> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 }

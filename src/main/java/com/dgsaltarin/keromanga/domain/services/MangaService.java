@@ -26,7 +26,7 @@ public class MangaService {
         return mangaRepository.getAll();
     }
 
-    public Manga getManga(int id) {
+    public Optional<Manga> getManga(int id) {
         return mangaRepository.getManga(id);
     }
 

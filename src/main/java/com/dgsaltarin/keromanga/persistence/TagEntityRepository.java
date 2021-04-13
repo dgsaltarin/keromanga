@@ -30,6 +30,16 @@ public class TagEntityRepository implements TagRepository {
     }
 
     @Override
+    public Tag getByName(String name) {
+        return tagMapper.toTag(tagCrudRepository.findByName(name));
+    }
+
+    @Override
+    public Optional<Tag> getTagById(int id) {
+        return Optional.ofNullable(tagMapper.toTag(tagCrudRepository.findById(id).get()));
+    }
+
+    @Override
     public Tag save(Tag tag) {
         TagEntity tagEntity = tagCrudRepository.save(tagMapper.toTagEntity(tag));
         return tagMapper.toTag(tagEntity);

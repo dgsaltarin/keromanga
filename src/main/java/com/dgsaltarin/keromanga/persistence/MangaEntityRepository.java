@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Repository
@@ -30,8 +31,12 @@ public class MangaEntityRepository implements MangaRepository {
     }
 
     @Override
-    public Manga getManga(int id) {
-        return mangaMapper.toManga(mangaCrudRepository.findById(id).get());
+    public Optional<Manga> getManga(int id) {
+        Manga manga = null;
+        try {
+            manga = mangaMapper.toManga(mangaCrudRepository.findById(id).get());
+        } catch (NoSuchElementException e) {}
+        return Optional.ofNullable(manga);
     }
 
     @Override

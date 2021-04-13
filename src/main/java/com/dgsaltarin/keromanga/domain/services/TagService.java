@@ -26,11 +26,22 @@ public class TagService {
         return tagRepository.getAll();
     }
 
+    public Optional<Tag> getTagById(int id) {
+        return tagRepository.getTagById(id);
+    }
+
+    public Tag getTagByName(String name) {
+        return tagRepository.getByName(name);
+    }
+
     public Tag add(TagRequest tag) {
         return tagRepository.save(tagConverter.convertTagRequestToTag(tag));
     }
 
-    public void delete(int id) {
-        tagRepository.delete(id);
+    public boolean delete(int id) {
+        return tagRepository.getTagById(id).map(tag -> {
+            tagRepository.delete(id);
+            return true;
+        }).orElse(false);
     }
 }

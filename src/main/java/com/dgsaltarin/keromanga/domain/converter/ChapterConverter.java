@@ -26,7 +26,7 @@ public class ChapterConverter {
     }
 
     public Chapter convertChapterRequestToChapter(ChapterRequest chapterRequest) {
-        Manga manga = mangaService.getManga(chapterRequest.getMangaId());
+        Manga manga = mangaService.getManga(chapterRequest.getMangaId()).get();
         List<Page> pages = new ArrayList<>();
         for (MultipartFile page: chapterRequest.getPages()) {
             Page chapterPage = new Page();
