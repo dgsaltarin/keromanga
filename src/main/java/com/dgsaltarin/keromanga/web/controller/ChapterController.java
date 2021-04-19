@@ -9,6 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +32,18 @@ public class ChapterController {
         this.chapterService = chapterService;
     }
 
+    @GetMapping("/manga/{id}")
+    public ResponseEntity<List<Chapter>> getMangaChapters(@PathVariable("id") int id) {
+        return chapterService.getMangaChapters(id).map(chapters -> new ResponseEntity<>(chapters, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Chapter> getChapterById(@PathVariable("id") int id) {
+        return chapterService.getChapterById(id).map(chapter -> new ResponseEntity<>(chapter, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Chapter> addChapter(@RequestParam("pages")MultipartFile[] pages, String request) {
         ChapterRequest chapterRequest;
@@ -44,5 +59,11 @@ public class ChapterController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(chapterService.save(chapterRequest), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete(@PathVariable("id") int id) {
+        chapterService.delete(id);
+        return new ResponseEntity( HttpStatus.OK);
     }
 }

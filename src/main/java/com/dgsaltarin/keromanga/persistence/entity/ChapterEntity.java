@@ -1,5 +1,9 @@
 package com.dgsaltarin.keromanga.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,15 +21,26 @@ import java.util.List;
 @Table(name = "chapter")
 public class ChapterEntity {
 
-    private int id;
-    private MangaEntity mangaEntity;
-    private int number;
-    private List<PageEntity> pages;
-    private LocalDate date;
-    private String cover;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_manga", updatable = false)
+    @JsonIgnore
+    private MangaEntity manga;
+
+    private int number;
+
+    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("chapter")
+    private List<PageEntity> pages;
+
+    private LocalDate date;
+
+    private String cover;
+
+
     public int getId() {
         return id;
     }
@@ -42,7 +57,6 @@ public class ChapterEntity {
         this.number = number;
     }
 
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL)
     public List<PageEntity> getPages() {
         return pages;
     }
@@ -67,13 +81,11 @@ public class ChapterEntity {
         this.cover = cover;
     }
 
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_manga")
     public MangaEntity getManga() {
-        return mangaEntity;
+        return manga;
     }
 
     public void setManga(MangaEntity mangaEntity) {
-        this.mangaEntity = mangaEntity;
+        this.manga = mangaEntity;
     }
 }

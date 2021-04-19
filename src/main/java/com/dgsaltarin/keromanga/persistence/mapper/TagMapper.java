@@ -18,10 +18,6 @@ public interface TagMapper {
     })
     Tag toTag(TagEntity tagEntity);
 
-    @InheritInverseConfiguration
-    @Mappings({
-            @Mapping(target = "mangas", ignore = true)
-    })
     TagEntity toTagEntity(Tag tag);
 
     List<Tag> toTags(List<TagEntity> tags);

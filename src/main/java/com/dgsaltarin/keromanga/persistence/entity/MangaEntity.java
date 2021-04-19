@@ -1,6 +1,7 @@
 package com.dgsaltarin.keromanga.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.CascadeType;
@@ -20,17 +21,28 @@ import java.util.List;
 @Table(name = "manga")
 public class MangaEntity {
 
-    private int id;
-    private String name;
-    private String author;
-    private String cover;
-    private List<ChapterEntity> chapters;
-    private String description;
-    private boolean onGoing;
-    private List<TagEntity> tags;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+
+    private String author;
+
+    private String cover;
+
+    @OneToMany(mappedBy = "manga", cascade = CascadeType.ALL)
+    private List<ChapterEntity> chapters;
+
+    private String description;
+
+    private boolean onGoing;
+
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @JoinTable(name = "manga_tag", joinColumns = @JoinColumn(name = "id_manga"), inverseJoinColumns = @JoinColumn(name = "id_tag"))
+    private List<TagEntity> tags;
+
+
     public int getId() {
         return id;
     }
@@ -63,8 +75,6 @@ public class MangaEntity {
         this.cover = cover;
     }
 
-    @OneToMany(mappedBy = "manga", cascade = CascadeType.ALL)
-    @JsonIgnore
     public List<ChapterEntity> getChapters() {
         return chapters;
     }
@@ -89,9 +99,6 @@ public class MangaEntity {
         this.onGoing = onGoing;
     }
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JsonManagedReference
-    @JoinTable(name = "manga_tag", joinColumns = @JoinColumn(name = "id_manga"), inverseJoinColumns = @JoinColumn(name = "id_tag"))
     public List<TagEntity> getTags() {
         return tags;
     }

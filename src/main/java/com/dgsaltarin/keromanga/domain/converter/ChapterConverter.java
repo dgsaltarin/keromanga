@@ -39,6 +39,7 @@ public class ChapterConverter {
         chapter.setDate(chapterRequest.getDate());
         chapter.setNumber(chapterRequest.getNumber());
         chapter.setCover(pages.get(1).getPageUrl());
+        chapter.setPages(pages);
         return chapter;
     }
 }
