@@ -15,7 +15,6 @@ public interface ChapterMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "cover", target = "cover"),
-            @Mapping(source = "pages", target = "pages"),
             @Mapping(source = "number", target = "number"),
             @Mapping(source = "date", target = "date"),
             @Mapping(source = "manga", target = "manga"),
@@ -23,6 +22,9 @@ public interface ChapterMapper {
     Chapter toChapter(ChapterEntity chapterEntity);
 
     @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(target = "pages", ignore = true),
+    })
     ChapterEntity toChapterEntity(Chapter chapter);
 
     List<Chapter> toChapters(List<ChapterEntity> chapters);

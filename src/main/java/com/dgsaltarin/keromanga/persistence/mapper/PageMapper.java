@@ -15,6 +15,7 @@ public interface PageMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "url", target = "pageUrl"),
+            @Mapping(source = "chapter", target = "chapter")
     })
     Page toPage(PageEntity pageEntity);
 

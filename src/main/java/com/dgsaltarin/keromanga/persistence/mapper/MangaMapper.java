@@ -20,11 +20,13 @@ public interface MangaMapper {
             @Mapping(source = "author", target = "author"),
             @Mapping(source = "onGoing", target = "onGoing"),
             @Mapping(source = "tags", target = "tags"),
-            @Mapping(source = "chapters", target = "chapters"),
     })
     Manga toManga(MangaEntity mangaEntity);
 
     @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(target = "chapters", ignore = true),
+    })
     MangaEntity toMangaEntity(Manga manga);
 
     List<Manga> toMangas(List<MangaEntity> mangas);
