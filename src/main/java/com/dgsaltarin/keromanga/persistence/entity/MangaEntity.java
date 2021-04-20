@@ -1,7 +1,5 @@
 package com.dgsaltarin.keromanga.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.CascadeType;
@@ -38,7 +36,6 @@ public class MangaEntity {
     private boolean onGoing;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JsonManagedReference
     @JoinTable(name = "manga_tag", joinColumns = @JoinColumn(name = "id_manga"), inverseJoinColumns = @JoinColumn(name = "id_tag"))
     private List<TagEntity> tags;
 

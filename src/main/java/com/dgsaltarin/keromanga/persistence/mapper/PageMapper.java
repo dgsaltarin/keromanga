@@ -19,6 +19,9 @@ public interface PageMapper {
     Page toPage(PageEntity pageEntity);
 
     @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(target = "chapter", ignore = true),
+    })
     PageEntity toPageEntity(Page page);
 
     List<Page> toPages(List<PageEntity> pages);

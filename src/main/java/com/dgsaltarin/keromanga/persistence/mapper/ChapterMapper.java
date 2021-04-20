@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PageMapper.class})
 public interface ChapterMapper {
 
     @Mappings({
@@ -17,13 +17,14 @@ public interface ChapterMapper {
             @Mapping(source = "cover", target = "cover"),
             @Mapping(source = "number", target = "number"),
             @Mapping(source = "date", target = "date"),
-            @Mapping(source = "manga", target = "manga"),
+            @Mapping(source = "pages", target = "pages"),
+            @Mapping(source = "idManga", target = "idManga"),
     })
     Chapter toChapter(ChapterEntity chapterEntity);
 
     @InheritInverseConfiguration
     @Mappings({
-            @Mapping(target = "pages", ignore = true),
+            @Mapping(target = "manga", ignore = true),
     })
     ChapterEntity toChapterEntity(Chapter chapter);
 

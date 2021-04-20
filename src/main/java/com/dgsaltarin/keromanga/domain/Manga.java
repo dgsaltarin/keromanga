@@ -9,7 +9,6 @@ public class Manga {
     private String name;
     private String author;
     private String cover;
-    private List<Chapter> chapters;
     private String description;
     private boolean onGoing;
     private List<Tag> tags;
@@ -44,14 +43,6 @@ public class Manga {
 
     public void setCover(String cover) {
         this.cover = cover;
-    }
-
-    public List<Chapter> getChapters() {
-        return chapters;
-    }
-
-    public void setChapters(List<Chapter> chapters) {
-        this.chapters = chapters;
     }
 
     public String getDescription() {

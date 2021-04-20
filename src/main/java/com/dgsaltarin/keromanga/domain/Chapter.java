@@ -10,7 +10,7 @@ public class Chapter {
     private List<Page> pages;
     private LocalDate date;
     private String cover;
-    private Manga manga;
+    private int idManga;
 
     public int getId() {
         return id;
@@ -52,11 +52,11 @@ public class Chapter {
         this.cover = cover;
     }
 
-    public Manga getManga() {
-        return manga;
+    public int getIdManga() {
+        return idManga;
     }
 
-    public void setManga(Manga manga) {
-        this.manga = manga;
+    public void setIdManga(int idManga) {
+        this.idManga = idManga;
     }
 }
