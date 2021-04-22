@@ -22,6 +22,10 @@ public class ChapterConverter {
     }
 
     public Chapter convertChapterRequestToChapter(ChapterRequest chapterRequest) {
+        Chapter chapter = new Chapter();
+        chapter.setDate(chapterRequest.getDate());
+        chapter.setNumber(chapterRequest.getNumber());
+        chapter.setIdManga(chapterRequest.getMangaId());
         List<Page> pages = new ArrayList<>();
         for (MultipartFile page: chapterRequest.getPages()) {
             Page chapterPage = new Page();
@@ -29,12 +33,9 @@ public class ChapterConverter {
             chapterPage.setPageUrl(pageUrl);
             pages.add(chapterPage);
         }
-        Chapter chapter = new Chapter();
-        chapter.setDate(chapterRequest.getDate());
-        chapter.setNumber(chapterRequest.getNumber());
         chapter.setCover(pages.get(1).getPageUrl());
         chapter.setPages(pages);
-        chapter.setIdManga(chapterRequest.getMangaId());
+
         return chapter;
     }
 }

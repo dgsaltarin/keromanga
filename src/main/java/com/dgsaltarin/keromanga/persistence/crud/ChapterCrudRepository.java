@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ChapterCrudRepository extends CrudRepository<ChapterEntity, Integer> {
 
-    List<ChapterEntity> findAllByManga(int mangaId);
+    List<ChapterEntity> findAllByIdManga(int mangaId);
 }

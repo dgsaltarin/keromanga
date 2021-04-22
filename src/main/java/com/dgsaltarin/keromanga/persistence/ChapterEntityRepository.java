@@ -1,7 +1,6 @@
 package com.dgsaltarin.keromanga.persistence;
 
 import com.dgsaltarin.keromanga.domain.Chapter;
-import com.dgsaltarin.keromanga.domain.Page;
 import com.dgsaltarin.keromanga.domain.repositories.ChapterRepository;
 import com.dgsaltarin.keromanga.persistence.crud.ChapterCrudRepository;
 import com.dgsaltarin.keromanga.persistence.entity.ChapterEntity;
@@ -28,7 +27,7 @@ public class ChapterEntityRepository implements ChapterRepository {
 
     @Override
     public Optional<List<Chapter>> getMangaChapters(int mangaId) {
-        List<ChapterEntity> chapters = chapterCrudRepository.findAllByManga(mangaId);
+        List<ChapterEntity> chapters = chapterCrudRepository.findAllByIdManga(mangaId);
         return Optional.ofNullable(chapterMapper.toChapters(chapters));
     }
 
