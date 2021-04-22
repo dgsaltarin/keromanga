@@ -25,14 +25,14 @@ public class ChapterEntity {
     @Column(name = "id_manga")
     private int idManga;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_manga", insertable = false, updatable = false)
     private MangaEntity manga;
 
     private int number;
 
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_chapter")
     private List<PageEntity> pages;
 
     private LocalDate date;

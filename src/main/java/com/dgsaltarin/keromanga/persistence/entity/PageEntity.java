@@ -1,13 +1,9 @@
 package com.dgsaltarin.keromanga.persistence.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +15,6 @@ public class PageEntity {
     private int id;
 
     private String url;
-
-    @ManyToOne
-    @JoinColumn(name = "id_chapter")
-    private ChapterEntity chapter;
 
     public int getId() {
         return id;
@@ -39,14 +31,5 @@ public class PageEntity {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    public ChapterEntity getChapter() {
-        return chapter;
-    }
-
-    public void setChapter(ChapterEntity chapter) {
-        this.chapter = chapter;
-    }
-
 
 }
