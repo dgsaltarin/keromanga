@@ -40,10 +40,6 @@ public class ChapterEntityRepository implements ChapterRepository {
     public Chapter save(Chapter chapter) {
         ChapterEntity chapterEntity = chapterMapper.toChapterEntity(chapter);
         Chapter chapterSaved = chapterMapper.toChapter(chapterCrudRepository.save(chapterEntity));
-        /*for (Page page: chapter.getPages()) {
-            page.setChapter(chapterSaved);
-            pageEntityRepository.save(page);
-        }*/
         return chapterSaved;
     }
 

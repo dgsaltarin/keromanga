@@ -8,9 +8,6 @@ import com.dgsaltarin.keromanga.persistence.mapper.PageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-
 @Repository
 public class PageEntityRepository implements PageRepository {
 
@@ -21,10 +18,6 @@ public class PageEntityRepository implements PageRepository {
     public PageEntityRepository(PageCrudRepository pageCrudRepository, PageMapper pageMapper) {
         this.pageCrudRepository = pageCrudRepository;
         this.pageMapper = pageMapper;
-    }
-    @Override
-    public Optional<List<Page>> getChapterPages(int idChapter) {
-        return Optional.empty();
     }
 
     @Override

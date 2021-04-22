@@ -1,6 +1,7 @@
 package com.dgsaltarin.keromanga.domain.services;
 
 import com.dgsaltarin.keromanga.domain.Chapter;
+import com.dgsaltarin.keromanga.domain.Page;
 import com.dgsaltarin.keromanga.domain.converter.ChapterConverter;
 import com.dgsaltarin.keromanga.domain.data.ChapterRequest;
 import com.dgsaltarin.keromanga.domain.repositories.ChapterRepository;
@@ -36,5 +37,9 @@ public class ChapterService {
 
     public void delete(int id) {
        chapterRepository.delete(id);
+    }
+
+    public Optional<List<Page>> getChapterPages(int idChapter) {
+        return Optional.ofNullable(getChapterById(idChapter).get().getPages());
     }
 }
