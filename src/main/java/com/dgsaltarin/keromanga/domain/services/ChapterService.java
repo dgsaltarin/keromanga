@@ -35,8 +35,11 @@ public class ChapterService {
         return chapterRepository.save(chapterConverter.convertChapterRequestToChapter(chapterRequest));
     }
 
-    public void delete(int id) {
-       chapterRepository.delete(id);
+    public boolean delete(int id) {
+        return chapterRepository.getChapter(id).map(tag -> {
+            chapterRepository.delete(id);
+            return true;
+        }).orElse(false);
     }
 
     public Optional<List<Page>> getChapterPages(int idChapter) {

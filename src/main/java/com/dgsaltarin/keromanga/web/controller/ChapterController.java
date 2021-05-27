@@ -63,7 +63,10 @@ public class ChapterController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable("id") int id) {
-        chapterService.delete(id);
-        return new ResponseEntity( HttpStatus.OK);
+        if (chapterService.delete(id)) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
     }
 }
