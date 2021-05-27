@@ -34,7 +34,10 @@ public class MangaService {
         return mangaRepository.save(mangaConverter.RequestMangaToManga(mangaRequest));
     }
 
-    public void delete(int id) {
-        mangaRepository.delete(id);
+    public boolean delete(int id) {
+        return mangaRepository.getManga(id).map(tag -> {
+            mangaRepository.delete(id);
+            return true;
+        }).orElse(false);
     }
 }

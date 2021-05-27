@@ -25,6 +25,7 @@ public class PageController {
 
     @GetMapping("/chapter/{id}")
     public ResponseEntity<List<Page>> getChapterPages(@PathVariable("id") int id) {
-        return new ResponseEntity(chapterService.getChapterPages(id), HttpStatus.OK);
+        return chapterService.getChapterPages(id).map(pages -> new ResponseEntity<>(pages, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

@@ -70,7 +70,10 @@ public class MangaController {
     @ApiOperation("delete manga by its id")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable("id") int id) {
-        mangaService.delete(id);
-        return new ResponseEntity(HttpStatus.OK);
+        if (mangaService.delete(id)) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
     }
 }
