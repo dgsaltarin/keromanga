@@ -3,6 +3,9 @@ package com.dgsaltarin.keromanga.web.controller;
 import com.dgsaltarin.keromanga.domain.Tag;
 import com.dgsaltarin.keromanga.domain.data.TagRequest;
 import com.dgsaltarin.keromanga.domain.services.TagService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,8 +44,18 @@ public class TagController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Tag> addTag(@RequestBody TagRequest tag) {
-        return new ResponseEntity(tagService.add(tag), HttpStatus.OK);
+    public ResponseEntity<Tag> addTag(String request) {
+        TagRequest tagRequest;
+        try {
+            tagRequest = new ObjectMapper().readValue(request, TagRequest.class);
+        } catch(JsonMappingException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity(tagService.add(tagRequest), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete")
