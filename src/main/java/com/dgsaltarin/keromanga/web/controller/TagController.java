@@ -44,8 +44,9 @@ public class TagController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Tag> addTag(String request) {
+    public ResponseEntity<Tag> addTag(@RequestBody String request) {
         TagRequest tagRequest;
+        System.out.println(request);
         try {
             tagRequest = new ObjectMapper().readValue(request, TagRequest.class);
         } catch(JsonMappingException e) {
