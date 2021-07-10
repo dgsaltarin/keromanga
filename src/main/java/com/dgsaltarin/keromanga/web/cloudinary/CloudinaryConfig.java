@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class CloudinaryConfig {
 
     public Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-            "cloud_name", "my_cloud_name",
-            "api_key", "my_api_key",
-            "api_secret", "my_api_secret",
+            "cloud_name", "dgmanga",
+            "api_key", "489336662144792",
+            "api_secret", "NRP9AlZ24BtfhJZ84w7kErPk-dE",
             "secure", true));
 
     public Cloudinary getCloudinary() {
