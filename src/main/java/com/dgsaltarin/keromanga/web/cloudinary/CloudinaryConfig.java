@@ -20,9 +20,9 @@ public class CloudinaryConfig {
   public Cloudinary cloudinary =
       new Cloudinary(
           ObjectUtils.asMap(
-              "cloud_name", cloudName,
-              "api_key", cloudKey,
-              "api_secret", cloudSecret,
+              "cloud_name", System.getenv().get("CLOUD_NAME"),
+              "api_key", System.getenv().get("CLOUDINARY_KEY"),
+              "api_secret", System.getenv().get("CLOUDINARY_SECRET"),
               "secure", true));
 
   public Cloudinary getCloudinary() {
