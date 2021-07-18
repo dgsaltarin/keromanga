@@ -2,20 +2,27 @@ package com.dgsaltarin.keromanga.web.cloudinary;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import io.github.cdimascio.dotenv.Dotenv;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CloudinaryConfig {
 
-  private Dotenv dotenv = Dotenv.load();
+  @Value("${CLOUD_NAME}")
+  private String cloudName;
+
+  @Value("${CLOUDINARY_SECRET}")
+  private String cloudSecret;
+
+  @Value("${CLOUDINARY_KEY}")
+  private String cloudKey;
 
   public Cloudinary cloudinary =
       new Cloudinary(
           ObjectUtils.asMap(
-              "cloud_name", dotenv.get("CLOUD_NAME"),
-              "api_key", dotenv.get("CLOUDINARY_KEY"),
-              "api_secret", dotenv.get("CLOUDINARY_SECRET"),
+              "cloud_name", cloudName,
+              "api_key", cloudKey,
+              "api_secret", cloudSecret,
               "secure", true));
 
   public Cloudinary getCloudinary() {
